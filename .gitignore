@@ -11,17 +11,21 @@ wp-content/advanced-cache.php
 wp-content/wp-cache-config.php
 wp-content/object-cache.php
 
-# IDE
+# IDE & Editors
 .vscode/
 .idea/
 *.swp
 *.swo
 *~
 .DS_Store
+*.sublime-project
+*.sublime-workspace
 
 # OS
 Thumbs.db
 .DS_Store
+.AppleDouble
+.LSOverride
 
 # Build
 dist/
@@ -36,3 +40,7 @@ yarn-error.log*
 # Environment
 .env
 .env.local
+.env.*.local
+
+# Testing
+.phpunit.result.cache

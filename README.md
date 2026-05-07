@@ -1,203 +1,225 @@
-# PDF Screenshot Protection
+# PDF Screenshot Protection Pro
 
-A powerful WordPress plugin to protect your PDF files against screenshots, copying, printing, and unauthorized access.
+A comprehensive WordPress plugin that provides **advanced screenshot protection** for your content across **Windows, Mac, and Mobile devices**.
 
-## Features
+## 🎯 Features
 
-✅ **Multiple Protection Methods**
-- Watermark overlay on PDFs
-- Disable copy/print functionality
-- Combined protection approach
+### 🪟 **Windows Protection**
+- ✅ Block Print Screen (PrtScn)
+- ✅ Block Alt + Print Screen
+- ✅ Block Win + Shift + S (Snip Tool)
+- ✅ Block Developer Tools (F12, Ctrl+Shift+I, Ctrl+Shift+J, Ctrl+Shift+C)
+- ✅ Disable Copy (Ctrl+C)
+- ✅ Disable Right-Click Context Menu
 
-✅ **Easy Configuration**
-- Simple admin dashboard
-- Customizable watermark text
-- Toggle protection on/off instantly
+### 🍎 **Mac Protection**
+- ✅ Block Cmd + Shift + 3 (Full Screenshot)
+- ✅ Block Cmd + Shift + 4 (Selection Screenshot)
+- ✅ Block Cmd + Shift + 5 (Screenshot App)
+- ✅ Block Developer Tools (Cmd+Option+I, Cmd+Option+J, Cmd+Option+U)
+- ✅ Disable Copy (Cmd+C)
+- ✅ Disable Right-Click Context Menu
 
-✅ **User-Friendly**
-- No technical knowledge required
-- Works with embedded PDFs
-- Compatible with standard WordPress PDF attachments
+### 📱 **Mobile Protection**
+- ✅ Detect Volume Button Screenshots (iOS & Android)
+- ✅ Monitor Screen Visibility Changes
+- ✅ Show Alert Notifications
+- ✅ Disable Text Selection
+- ✅ Disable Right-Click (Long Press)
+- ✅ Prevent Context Menu
 
-✅ **Security Features**
-- Block right-click context menu
-- Prevent text selection
-- Disable copy shortcut (Ctrl+C)
-- Disable print shortcut (Ctrl+P)
+### 🔧 **General Features**
+- ✅ Automatic Device Detection
+- ✅ Customizable Alert Messages
+- ✅ Per-Device Configuration
+- ✅ Easy Admin Dashboard
+- ✅ No Technical Knowledge Required
+- ✅ Translation Ready
 
-## Installation
+## 📦 Installation
 
-1. Download the plugin or clone the repository:
+1. **Clone the repository:**
    ```bash
    git clone https://github.com/ketata99/pdf-screenshot-protection.git
    ```
 
-2. Upload to your WordPress plugins directory:
-   ```
-   /wp-content/plugins/pdf-screenshot-protection/
-   ```
+2. **Upload to WordPress:**
+   - Upload the folder to `/wp-content/plugins/`
+   - Or use WordPress admin: Plugins → Add New → Upload Plugin
 
-3. Activate the plugin from WordPress admin panel:
-   - Go to `Plugins` → `Installed Plugins`
-   - Find "PDF Screenshot Protection"
+3. **Activate the plugin:**
+   - Go to WordPress Admin → Plugins
+   - Find "PDF Screenshot Protection Pro"
    - Click "Activate"
 
-## Usage
+## ⚙️ Configuration
 
-### Basic Configuration
+### Admin Dashboard
 
-1. Navigate to `PDF Protection` in the WordPress admin menu
-2. Configure your protection settings:
-   - **Enable Protection**: Toggle protection on/off
-   - **Protection Method**: Choose between Watermark, Disable Copy/Print, or Combined
-   - **Watermark Text**: Enter custom text for watermark (default: "CONFIDENTIAL")
-   - **Block Copy**: Prevent users from copying PDF text
-   - **Block Print**: Prevent users from printing PDFs
-   - **Block Download**: Prevent users from downloading PDFs
-3. Click "Save Changes"
+1. Navigate to **Screenshot Protection** in the WordPress admin menu
+2. Configure your settings:
 
-### Protection Methods
+#### General Settings
+- **Enable Protection** - Toggle protection on/off
+- **Alert Message** - Customize the alert message shown when users attempt screenshots
+- **Block Copy** - Disable copy functionality across all devices
+- **Block Right-Click** - Disable right-click context menu
 
-#### Watermark
-Adds a semi-transparent overlay text across the PDF. Perfect for marking PDFs as confidential.
+#### Windows Protection
+- **Enable Windows Protection** - Toggle Windows-specific protection
+- **Block Print Screen** - Prevent PrtScn key
+- **Block Alt + Print Screen** - Prevent Alt+PrtScn combination
+- **Block Win + Shift + S** - Prevent Snip Tool shortcut
+- **Block Developer Tools** - Prevent F12 and DevTools shortcuts
 
-#### Disable Copy/Print
-Prevents users from copying text or printing the PDF document.
+#### Mac Protection
+- **Enable Mac Protection** - Toggle Mac-specific protection
+- **Block Cmd + Shift + 3** - Prevent full screenshot
+- **Block Cmd + Shift + 4** - Prevent selection screenshot
+- **Block Cmd + Shift + 5** - Prevent Screenshot app
+- **Block Developer Tools** - Prevent DevTools shortcuts
 
-#### Combined
-Applies both watermark and copy/print blocking for maximum security.
+#### Mobile Protection
+- **Enable Mobile Protection** - Toggle Mobile-specific protection
+- **Block Volume Button Screenshots** - Prevent screenshots via volume buttons
+- **Show Alert on Screenshot Attempt** - Display notification on detection
 
-## Configuration Options
+3. Click **Save Changes**
 
-All settings are stored in WordPress options and can be modified through the admin interface:
+## 🔧 Device Detection
 
-- `pdf_screenshot_protection_enabled` - Enable/disable the plugin
-- `pdf_screenshot_protection_method` - Protection method (watermark/disable_copy/combined)
-- `pdf_screenshot_protection_watermark` - Custom watermark text
-- `pdf_screenshot_protection_block_copy` - Block copy functionality
-- `pdf_screenshot_protection_block_print` - Block print functionality
-- `pdf_screenshot_protection_block_download` - Block download functionality
+The plugin automatically detects the user's device and applies the appropriate protection:
 
-## Screenshots
+| Device | Protection Applied |
+|--------|--------------------|
+| Windows PC | Windows Protection |
+| Mac | Mac Protection |
+| iPhone/iPad | iOS/Mobile Protection |
+| Android Phone/Tablet | Android/Mobile Protection |
+| Other | General Protection |
 
-### Admin Settings Panel
-Easy-to-use admin interface for configuring PDF protection settings.
-
-### Protected PDF
-PDFs are displayed with protection layers applied according to your settings.
-
-## Compatibility
-
-- **WordPress**: 5.0 and above
-- **PHP**: 7.2 and above
-- **Browsers**: All modern browsers (Chrome, Firefox, Safari, Edge)
-
-## File Structure
+## 📋 File Structure
 
 ```
 pdf-screenshot-protection/
-├── pdf-screenshot-protection.php       # Main plugin file
+├── pdf-screenshot-protection.php          # Main plugin file
 ├── includes/
-│   ├── class-pdf-screenshot-protection.php  # Core functionality
-│   └── class-admin-settings.php             # Admin settings
+│   ├── class-device-detector.php          # Device detection logic
+│   ├── class-pdf-screenshot-protection.php # Core functionality
+│   └── class-admin-settings.php           # Admin panel
 ├── assets/
 │   ├── js/
-│   │   └── pdf-protection.js           # Frontend JavaScript
+│   │   ├── pdf-protection-windows.js      # Windows protection
+│   │   ├── pdf-protection-mac.js          # Mac protection
+│   │   └── pdf-protection-mobile.js       # Mobile protection
 │   └── css/
-│       ├── pdf-protection.css          # Frontend styles
-│       └── admin.css                   # Admin styles
+│       ├── pdf-protection.css             # Frontend styles
+│       └── admin.css                      # Admin styles
 ├── languages/
-│   └── pdf-screenshot-protection.pot   # Translation template
-├── README.md                            # Documentation
-└── LICENSE                              # GPL v2 License
+│   └── pdf-screenshot-protection.pot      # Translation template
+├── README.md                              # Documentation
+└── LICENSE                                # GPL v2 License
 ```
 
-## Development
-
-### Code Structure
-
-The plugin follows WordPress coding standards:
-- Object-oriented programming with singleton pattern
-- Proper hook usage (actions and filters)
-- Security best practices (escaping, sanitizing)
-- Comprehensive inline documentation
-
-### Hooks
-
-#### Filters
-- `pdf_screenshot_protection_enabled` - Modify protection enabled status
-- `pdf_screenshot_protection_method` - Modify protection method
-
-#### Actions
-- `pdf_screenshot_protection_init` - Plugin initialization
-- `pdf_screenshot_protection_enqueue_scripts` - Script/style enqueue
-
-## Security Considerations
+## 🔐 Security Considerations
 
 ⚠️ **Important Notes**:
-- This plugin provides user-level protection, not cryptographic PDF encryption
-- Advanced users may still find ways to bypass protections
-- For highly sensitive documents, consider PDF encryption at the file level
-- Always keep WordPress and plugins updated
 
-## Troubleshooting
+1. **Browser-Level Protection**: This plugin operates at the browser/application level and provides reasonable protection against casual screenshot attempts.
 
-### PDFs not showing watermark
-- Ensure the plugin is activated
-- Check that protection is enabled in settings
-- Verify the protection method is set to "Watermark" or "Combined"
-- Clear browser cache
+2. **Advanced Users**: Sophisticated users may find ways to bypass these protections using:
+   - System-level tools
+   - Different operating systems
+   - Virtual machines
+   - External hardware capture devices
 
-### Copy/Print still works
-- Some PDF viewers may have built-in protection override
-- Check if browser extensions are interfering
-- Try a different browser
+3. **Best Practices**:
+   - Use this plugin in conjunction with other security measures
+   - Keep WordPress and all plugins updated
+   - Implement server-side security measures
+   - Use HTTPS for all connections
+   - Consider PDF encryption for sensitive documents
 
-### Admin menu not appearing
-- Ensure you have administrator privileges
-- Verify the plugin is activated
-- Check PHP error logs
+4. **Limitations**:
+   - Cannot prevent physical photographs of the screen
+   - Cannot prevent all clipboard operations
+   - Cannot prevent network-level interception
 
-## FAQ
+## 🐛 Troubleshooting
 
-**Q: Will this prevent users from taking screenshots?**
-A: The watermark can be visible in screenshots, but this plugin cannot technically prevent screenshots on a user's device. For absolute screenshot prevention, consider solutions with DRM (Digital Rights Management).
+### Protection not working
+1. Verify the plugin is activated
+2. Check that protection is enabled in settings
+3. Clear browser cache
+4. Test in a different browser
+5. Disable browser extensions that might interfere
 
-**Q: Is this secure?**
-A: This plugin provides reasonable protection against casual copying and printing. For highly sensitive documents, implement PDF encryption or consider specialized DRM solutions.
+### Admin page not loading
+1. Verify you have administrator privileges
+2. Check PHP error logs
+3. Increase PHP memory limit
+4. Disable other admin plugins temporarily
 
-**Q: Can I customize the watermark text?**
-A: Yes! Go to PDF Protection settings and enter your custom watermark text.
+### Settings not saving
+1. Check file permissions on `/wp-content/plugins/`
+2. Verify WordPress database connectivity
+3. Check PHP error logs
+4. Try disabling other plugins
 
-**Q: Does this work with all PDF viewers?**
-A: It works best with browser-based PDF viewers. Plugin functionality may vary depending on the PDF viewer being used.
+## ❓ FAQ
 
-**Q: Can I translate this plugin?**
-A: Yes! The plugin is fully translatable. Copy `languages/pdf-screenshot-protection.pot` and create your language files.
+**Q: Can this completely prevent all screenshots?**
+A: No. This plugin prevents keyboard shortcuts and common methods, but cannot prevent system-level capture or physical photography.
 
-## Support
+**Q: Does this work on all browsers?**
+A: It works on all modern browsers (Chrome, Firefox, Safari, Edge). Some mobile browsers may have limitations.
 
-For issues, questions, or feature requests, please visit:
-- GitHub Issues: https://github.com/ketata99/pdf-screenshot-protection/issues
-- GitHub Discussions: https://github.com/ketata99/pdf-screenshot-protection/discussions
+**Q: Can I customize the alert message?**
+A: Yes! Go to Screenshot Protection settings and enter your custom message in the "Alert Message" field.
 
-## License
+**Q: What about mobile apps that embed web content?**
+A: The plugin works within web browsers. In-app browsers may have different behavior.
 
-This plugin is licensed under the GPL v2 or later. See `LICENSE` file for details.
+**Q: Is this GDPR compliant?**
+A: The plugin doesn't collect personal data. Ensure your overall WordPress setup is GDPR compliant.
 
-## Changelog
+**Q: Can I use this on WooCommerce or membership sites?**
+A: Yes! The plugin works site-wide or can be combined with conditional logic for specific pages.
+
+## 📝 Changelog
+
+### Version 2.0.0 (Current)
+- Complete rewrite with device-specific protection
+- Added Windows protection suite
+- Added Mac protection suite
+- Added Mobile protection suite
+- Improved admin dashboard UI
+- Added automatic device detection
+- Enhanced security features
 
 ### Version 1.0.0
 - Initial release
-- Core protection features
-- Admin settings panel
-- Watermark functionality
-- Copy/Print blocking
+- Basic protection features
+- Simple admin panel
 
-## Credits
+## 🤝 Support
 
-Developed by ketata99
+For issues, questions, or feature requests:
+- GitHub Issues: [https://github.com/ketata99/pdf-screenshot-protection/issues](https://github.com/ketata99/pdf-screenshot-protection/issues)
+- GitHub Discussions: [https://github.com/ketata99/pdf-screenshot-protection/discussions](https://github.com/ketata99/pdf-screenshot-protection/discussions)
 
-## Disclaimer
+## 📄 License
 
-This plugin is provided as-is without any warranties. Always backup your site before installing new plugins.
+This plugin is licensed under the GPL v2 or later. See `LICENSE` file for details.
+
+## 👤 Credits
+
+Developed by **ketata99**
+
+## ⚖️ Disclaimer
+
+This plugin is provided "as-is" without any warranties. The author is not responsible for any damages or data loss caused by using this plugin. Always backup your site before installing new plugins.
+
+---
+
+**Support the Developer**: If you find this plugin useful, please consider leaving a ⭐ on GitHub!

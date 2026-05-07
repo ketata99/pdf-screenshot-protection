@@ -2,51 +2,96 @@
  * PDF Screenshot Protection - Frontend Styles
  */
 
-/* Protected PDF Container */
-.pdf-protected {
-    position: relative;
-    overflow: hidden;
-}
-
-/* Watermark styling */
-.pdf-protected::before {
-    content: attr(data-watermark, 'CONFIDENTIAL');
+/* Protection Overlay */
+.pdf-protection-overlay {
     position: fixed;
-    top: 50%;
-    left: 50%;
-    font-size: 60px;
-    font-weight: bold;
-    color: rgba(192, 192, 192, 0.5);
-    opacity: 0.1;
-    transform: translate(-50%, -50%) rotate(-45deg);
-    z-index: 10;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    z-index: 1;
     pointer-events: none;
-    width: 1200px;
+    background: transparent;
+}
+
+/* Disable Text Selection */
+body.pdf-protection-enabled,
+.pdf-protected-content {
+    user-select: none;
+    -webkit-user-select: none;
+    -moz-user-select: none;
+    -ms-user-select: none;
+    -webkit-touch-callout: none;
+}
+
+/* Protected Element Styles */
+.pdf-protected-element {
+    position: relative;
+}
+
+/* Alert Notification */
+.pdf-protection-alert {
+    position: fixed;
+    top: 20px;
+    left: 50%;
+    transform: translateX(-50%);
+    background: rgba(220, 53, 69, 0.95);
+    color: white;
+    padding: 15px 20px;
+    border-radius: 5px;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.3);
+    z-index: 10000;
+    font-size: 14px;
     text-align: center;
+    max-width: 90%;
+    animation: slideDown 0.3s ease-out;
 }
 
-/* PDF Embed */
-embed[type="application/pdf"],
-iframe[src*=".pdf"],
-object[data*=".pdf"] {
-    user-select: none;
-    -webkit-user-select: none;
-    -moz-user-select: none;
-    -ms-user-select: none;
+@keyframes slideDown {
+    from {
+        opacity: 0;
+        transform: translate(-50%, -20px);
+    }
+    to {
+        opacity: 1;
+        transform: translate(-50%, 0);
+    }
 }
 
-/* Disable text selection */
-.pdf-protected {
-    user-select: none;
-    -webkit-user-select: none;
-    -moz-user-select: none;
-    -ms-user-select: none;
+/* Mobile Specific Styles */
+@media (max-width: 768px) {
+    .pdf-protection-overlay {
+        z-index: 1;
+    }
+
+    /* Prevent screen capture on mobile */
+    body {
+        -webkit-app-region: drag;
+        -webkit-user-select: none;
+        -webkit-touch-callout: none;
+    }
+}
+
+/* Prevent inspect element on right-click */
+.no-context-menu {
+    position: relative;
 }
 
 /* Print media query */
 @media print {
-    .pdf-protected::before {
-        content: 'DO NOT PRINT';
+    .pdf-protection-overlay::before {
+        content: 'PRINTING DISABLED';
+        position: fixed;
+        top: 50%;
+        left: 50%;
+        font-size: 60px;
+        font-weight: bold;
+        color: rgba(192, 192, 192, 0.5);
         opacity: 0.3;
+        transform: translate(-50%, -50%) rotate(-45deg);
+        z-index: 10;
+        pointer-events: none;
+        width: 1200px;
+        text-align: center;
     }
 }
