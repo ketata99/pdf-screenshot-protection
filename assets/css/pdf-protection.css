@@ -1,0 +1,52 @@
+/**
+ * PDF Screenshot Protection - Frontend Styles
+ */
+
+/* Protected PDF Container */
+.pdf-protected {
+    position: relative;
+    overflow: hidden;
+}
+
+/* Watermark styling */
+.pdf-protected::before {
+    content: attr(data-watermark, 'CONFIDENTIAL');
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    font-size: 60px;
+    font-weight: bold;
+    color: rgba(192, 192, 192, 0.5);
+    opacity: 0.1;
+    transform: translate(-50%, -50%) rotate(-45deg);
+    z-index: 10;
+    pointer-events: none;
+    width: 1200px;
+    text-align: center;
+}
+
+/* PDF Embed */
+embed[type="application/pdf"],
+iframe[src*=".pdf"],
+object[data*=".pdf"] {
+    user-select: none;
+    -webkit-user-select: none;
+    -moz-user-select: none;
+    -ms-user-select: none;
+}
+
+/* Disable text selection */
+.pdf-protected {
+    user-select: none;
+    -webkit-user-select: none;
+    -moz-user-select: none;
+    -ms-user-select: none;
+}
+
+/* Print media query */
+@media print {
+    .pdf-protected::before {
+        content: 'DO NOT PRINT';
+        opacity: 0.3;
+    }
+}

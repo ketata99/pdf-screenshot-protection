@@ -1,0 +1,67 @@
+/**
+ * PDF Screenshot Protection - Admin Styles
+ */
+
+.pdf-screenshot-protection-wrap {
+    max-width: 800px;
+    margin: 20px 0;
+}
+
+.pdf-screenshot-protection-wrap h1 {
+    color: #333;
+    margin-bottom: 20px;
+}
+
+.pdf-screenshot-protection-wrap form {
+    background: #fff;
+    padding: 20px;
+    border: 1px solid #ddd;
+    border-radius: 5px;
+    box-shadow: 0 1px 3px rgba(0, 0, 0, 0.1);
+}
+
+.pdf-screenshot-protection-wrap table.form-table {
+    width: 100%;
+}
+
+.pdf-screenshot-protection-wrap table.form-table tr {
+    border-bottom: 1px solid #eee;
+}
+
+.pdf-screenshot-protection-wrap table.form-table th {
+    font-weight: 600;
+    padding: 15px;
+    background-color: #f9f9f9;
+}
+
+.pdf-screenshot-protection-wrap table.form-table td {
+    padding: 15px;
+}
+
+.pdf-screenshot-protection-wrap input[type="text"],
+.pdf-screenshot-protection-wrap select {
+    width: 100%;
+    max-width: 400px;
+    padding: 8px;
+    border: 1px solid #ddd;
+    border-radius: 3px;
+    font-size: 14px;
+}
+
+.pdf-screenshot-protection-wrap input[type="checkbox"] {
+    cursor: pointer;
+}
+
+.pdf-screenshot-protection-wrap .submit button {
+    background-color: #0073aa;
+    color: #fff;
+    padding: 10px 20px;
+    border: none;
+    border-radius: 3px;
+    cursor: pointer;
+    font-size: 14px;
+}
+
+.pdf-screenshot-protection-wrap .submit button:hover {
+    background-color: #005a87;
+}
